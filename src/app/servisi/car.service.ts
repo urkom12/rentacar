@@ -35,7 +35,7 @@ export class CarService {
         );
       }),
       catchError(error => {
-        console.error('Greška pri rezervaciji:', error);
+        console.error('Greška', error);
         return of(null);
       })
     );

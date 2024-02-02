@@ -76,7 +76,7 @@ export class UserService {
         }
       }),
       catchError(error => {
-        console.error('Greška prilikom prijave:', error);
+        console.error('Greška', error);
         return EMPTY;
       })
     );

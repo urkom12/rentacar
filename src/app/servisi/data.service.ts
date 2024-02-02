@@ -27,7 +27,7 @@ export class DataService {
 
     return this.http.put(url, noviPodaci, { headers }).pipe(
       catchError((error) => {
-        console.error('Greška prilikom ažuriranja automobila:', error);
+        console.error('Greška', error);
         throw error;
       })
     );
