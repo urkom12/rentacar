@@ -1,0 +1,36 @@
+<div class="user-panel-container">
+  <h2>User Panel</h2>
+  <div>
+    <h3>Vaše rezervacije</h3>
+    <ul>
+      <li *ngFor="let reservation of userReservations$ | async">
+        {{ reservation.automobilId }} - {{ reservation.datum | date }} ({{ reservation.brojDana }} dana)
+      </li>
+    </ul>
+  </div>
+  <div class="user-content">
+    <h3>Dostupni Automobili za Rezervaciju</h3>
+    <button (click)="refreshData()">Osveži</button>
+    <form [formGroup]="reservationForm" (ngSubmit)="reserveCar()">
+      <div *ngFor="let car of notReservedAutomobili$ | async">
+        <input
+          type="radio"
+          [id]="car.id"
+          [value]="car.id"
+          [checked]="selectedCarId === car.id"
+          (change)="onSelectCar(car)"
+        />
+        <label [for]="car.id">{{ car.marka }} - {{ car.model }} ({{ car.cena_po_danu }}e po danu)</label>
+      </div>
+      
+      <input type="number" formControlName="brojDana" />
+      <button type="submit">Rezerviši</button>
+    </form>
+
+    <div *ngIf="reservationError">{{ reservationError }}</div>
+  </div>
+</div>
+
+<div class="back-to-login">
+  <button (click)="navigateToLogin()">Nazad na Login</button>
+</div>

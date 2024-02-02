@@ -1,0 +1,57 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "user1",
+      "password": "pass1",
+      "type": "user"
+    },
+    {
+      "id": "2",
+      "username": "admin",
+      "password": "admin",
+      "type": "admin"
+    },
+    {
+      "id": "12333",
+      "username": "aleksa",
+      "password": "urkom",
+      "type": "user"
+    }
+  ],
+  "automobili": [
+    {
+      "id": "1",
+      "marka": "Toyota",
+      "model": "Corolla",
+      "godiste": 2020,
+      "cena_po_danu": 123,
+      "rezervisano": true
+    },
+    {
+      "id": "edc7",
+      "marka": "Toyota",
+      "model": "x1",
+      "godiste": 21,
+      "cena_po_danu": 233,
+      "rezervisano": false
+    },
+    {
+      "id": "edc2",
+      "marka": "Toyota",
+      "model": "x3",
+      "godiste": 233,
+      "cena_po_danu": 266,
+      "rezervisano": false
+    }
+  ],
+  "rezervacije": [
+    {
+      "id": "d01d",
+      "automobilId": "1",
+      "userId": "12333",
+      "datum": "2024-02-02T06:06:55.601Z",
+      "brojDana": 1
+    }
+  ]
+}

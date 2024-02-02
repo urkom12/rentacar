@@ -1,0 +1,102 @@
+  <!-- admin-panel.component.html -->
+<div class="admin-panel-container">
+  <h2>Admin Panel</h2>
+  
+  <div class="admin-content">
+    <div>
+      <h3>Dodaj Novi Automobil</h3>
+      <form>
+        <form>
+          <div class="form-group">
+            <label for="marka">Marka:</label>
+            <input type="text" id="marka" name="marka" [(ngModel)]="noviAutomobil.marka" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="model">Model:</label>
+            <input type="text" id="model" name="model" [(ngModel)]="noviAutomobil.model" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="Godina">Godina:</label>
+            <input type="number" id="Godina" name="Godina" [(ngModel)]="noviAutomobil.godiste" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="cena_po_danu">Cena po danu:</label>
+            <input type="number" id="cena_po_danu" name="cena_po_danu" [(ngModel)]="noviAutomobil.cena_po_danu" required>
+          </div>
+          <button type="button" (click)="dodajNoviAutomobil()">Dodaj Automobil</button>
+          <button *ngIf="showUpdateButton" (click)="azurirajAutomobil()">Ažuriraj</button>
+        </form>
+      </form>
+    </div>
+    
+    <div>
+      <h3>Automobili</h3>
+      <table class="admin-table">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Marka</th>
+              <th>Model</th>
+              <th>Godište</th>
+              <th>Cena po danu</th>
+              <th>Rezervisan</th>
+              <th>Brisanje</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let automobil of automobili">
+              <td>{{ automobil.id }}</td>
+              <td>{{ automobil.marka }}</td>
+              <td>{{ automobil.model }}</td>
+              <td>{{ automobil.godiste }}</td>
+              <td>{{ automobil.cena_po_danu }}</td>
+              <td>{{ automobil.rezervisano ? 'Da' : 'Ne' }}</td>
+              <td>
+                <button (click)="obrisiAutomobil(automobil.id)">Obriši</button>
+                <button (click)="popuniFormuZaAzuriranje(automobil)">Ažuriraj</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </table>
+    </div>
+
+    <div>
+      <h3>Rezervacije</h3>
+      <ul class="admin-list">
+        <ul>
+          <li *ngFor="let reservation of rezervacije">
+            {{ reservation.automobilId }} - {{ reservation.datum | date }} ({{ reservation.brojDana }} dana)
+            <button (click)="deleteReservation(reservation.id)">Obriši</button>
+          </li>
+        </ul>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Useri</h3>
+      <table class="admin-table">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Ime</th>
+              <th>Prezime</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.id }}</td>
+              <td>{{ user.username }}</td>
+              <td>{{ user.password }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </table>
+    </div>
+  </div>
+</div>
